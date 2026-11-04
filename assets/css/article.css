@@ -262,18 +262,6 @@
   }
 }
 
-/* 最後の言葉 */
-.closing-quote {
-  margin-block: 24px;
-  padding: 48px clamp(20px, 4vw, 32px);
-  font-family: var(--f-mincho);
-  font-size: clamp(1.125rem, 0.95rem + 0.8vw, 1.4375rem);
-  line-height: 2;
-  letter-spacing: 0.1em;
-  text-align: center;
-  color: var(--c-text-strong);
-}
-
 /* ---------- クリニック情報 ---------- */
 .clinic {
   padding-top: 128px;
