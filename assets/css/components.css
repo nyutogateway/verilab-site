@@ -1,0 +1,275 @@
+@charset "UTF-8";
+/* ==========================================================
+   components.css — 見出しラベル・写真枠・カード・ボタン・水滴
+   ========================================================== */
+
+/* ---------- 英字ラベル ---------- */
+.label-en {
+  display: inline-block;
+  font-family: var(--f-en);
+  font-size: 1.0625rem;
+  letter-spacing: 0.3em;
+  color: var(--c-sky);
+  line-height: 1.6;
+}
+
+/* 下に短い線を引く（中央揃えの見出し用） */
+.label-en--line {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.label-en--line::after {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--c-accent);
+}
+
+.file-no {
+  font-family: var(--f-en);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: var(--c-accent);
+}
+
+/* ---------- セクション見出し ---------- */
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section-head--center {
+  align-items: center;
+  text-align: center;
+}
+
+.section-head__title {
+  font-size: var(--fs-xl);
+  line-height: 1.8;
+  letter-spacing: 0.16em;
+}
+
+/* ---------- 写真枠 ---------- */
+.photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-m);
+  background: var(--c-ph);
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo--float {
+  box-shadow: var(--shadow-float);
+}
+
+/* ---------- 白いパネル ---------- */
+.panel {
+  position: relative;
+  border-radius: var(--r-l);
+  background: var(--c-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ---------- ドクターズファイル カード ---------- */
+.file-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 16px 28px;
+  border-radius: var(--r-m);
+  background: var(--c-surface);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.6s var(--ease-out), box-shadow 0.6s var(--ease-out);
+}
+
+.file-card:hover {
+  color: var(--c-text);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-float);
+}
+
+.file-card__photo {
+  aspect-ratio: 4 / 5;
+  max-width: 100%;
+  border-radius: var(--r-s);
+}
+
+.file-card__photo img {
+  transition: transform 1.2s var(--ease-out);
+}
+
+.file-card:hover .file-card__photo img {
+  transform: scale(1.05);
+}
+
+.file-card__body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-inline: 8px;
+}
+
+.file-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 12px;
+  font-size: var(--fs-xs);
+}
+
+.file-card__catch {
+  flex: 1 1 auto;
+  font-family: var(--f-mincho);
+  font-size: 1.1875rem;
+  line-height: 1.8;
+  letter-spacing: 0.08em;
+  color: var(--c-text-strong);
+}
+
+.file-card__person {
+  display: flex;
+  flex-direction: column;
+  padding-top: 12px;
+  border-top: 1px solid var(--c-line);
+  line-height: 1.8;
+}
+
+.file-card__clinic {
+  font-size: var(--fs-xs);
+}
+
+.file-card__name {
+  font-weight: 500;
+  color: var(--c-text-strong);
+}
+
+/* 準備中カード */
+.file-card--soon {
+  pointer-events: none;
+}
+
+.file-card--soon .file-card__catch {
+  color: var(--c-text);
+}
+
+/* ---------- ボタン ---------- */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 0 32px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--c-accent);
+  color: var(--c-white);
+  font-size: var(--fs-s);
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: background-color 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+.btn-pill:hover {
+  background: var(--c-accent-deep);
+  color: var(--c-white);
+  transform: translateY(-2px);
+}
+
+/* 枠線だけのボタン（淡い背景の上で使う） */
+/* 公式サイトの「View more」と同じ、スカイブルーの枠線ボタン */
+.btn-pill--ghost {
+  border: 1px solid var(--c-sky);
+  background: var(--c-surface);
+  color: var(--c-sky);
+}
+
+.btn-pill--ghost:hover {
+  background: var(--c-sky);
+}
+
+.btn-pill__arrow {
+  font-family: var(--f-en);
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+/* ---------- 水滴（装飾） ---------- */
+.drop {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--c-white) 0%, var(--c-white) 45%, var(--c-drop-edge) 100%);
+  box-shadow: var(--shadow-drop);
+  pointer-events: none;
+}
+
+.drop--l {
+  width: 40px;
+  height: 40px;
+}
+
+.drop--m {
+  width: 30px;
+  height: 30px;
+}
+
+.drop--s {
+  width: 14px;
+  height: 14px;
+}
+
+/* ---------- 下層ページの見出し ---------- */
+.page-head {
+  position: relative;
+  padding-block: 48px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.page-head .drop--m {
+  top: 40px;
+  right: 6%;
+}
+
+.page-head__title {
+  font-size: var(--fs-xxl);
+  line-height: 1.6;
+  letter-spacing: 0.18em;
+}
+
+.page-head__lead {
+  max-width: 40em;
+  margin-top: 16px;
+}
+
+.page-head__action {
+  align-self: flex-start;
+  margin-top: 24px;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-size: var(--fs-xs);
+}
+
+.breadcrumb li + li::before {
+  content: "/";
+  margin-right: 12px;
+  color: var(--c-blue);
+}

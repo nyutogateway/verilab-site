@@ -1,0 +1,155 @@
+@charset "UTF-8";
+/* ==========================================================
+   animation.css — キーフレーム・ふわっと表示・水滴の浮遊
+   ========================================================== */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slowZoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ---------- 読み込み時の演出（.is-loaded で開始） ---------- */
+.intro {
+  opacity: 0;
+}
+
+.is-loaded .intro {
+  animation: fadeUp 1.2s var(--ease-out) both;
+}
+
+.is-loaded .intro--down {
+  animation-name: fadeDown;
+  animation-duration: 1.6s;
+}
+
+.is-loaded .intro--fade {
+  animation-name: fadeIn;
+  animation-duration: 1.6s;
+}
+
+.is-loaded .intro--d1 { animation-delay: 0.3s; }
+.is-loaded .intro--d2 { animation-delay: 0.9s; }
+.is-loaded .intro--d3 { animation-delay: 1.3s; }
+.is-loaded .intro--d4 { animation-delay: 1.6s; }
+.is-loaded .intro--d5 { animation-delay: 2s; }
+
+/* JS が動かない環境では最初から表示 */
+.no-js .intro {
+  opacity: 1;
+}
+
+/* ---------- スクロールで表示（JS 有効時のみ隠す） ---------- */
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1.2s var(--ease-out), transform 1.2s var(--ease-out);
+}
+
+.js-reveal .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.js-reveal .reveal--d1 { transition-delay: 0.12s; }
+.js-reveal .reveal--d2 { transition-delay: 0.24s; }
+
+/* ---------- 写真のゆっくりズーム ---------- */
+.is-loaded .zoom-in img {
+  animation: slowZoom 2.6s var(--ease-out) both;
+}
+
+/* ---------- 水滴の浮遊 ---------- */
+.drop {
+  animation: float 7s ease-in-out infinite;
+}
+
+.drop--slow {
+  animation-duration: 9s;
+  animation-delay: -3s;
+}
+
+.drop--slower {
+  animation-duration: 11s;
+  animation-delay: -5s;
+}
+
+/* ---------- 動きを減らす設定 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .intro,
+  .is-loaded .intro,
+  .js-reveal .reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+
+  .drop,
+  .is-loaded .zoom-in img {
+    animation: none;
+  }
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>お問い合わせ｜肌と向き合う、医師たち。</title>
+<meta name="description" content="「肌と向き合う、医師たち。」VERILAB DOCTOR'S FILE へのお問い合わせ。掲載や取材についてのご相談はこちらから。">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/common/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=Noto+Sans+JP:wght@400;500&amp;family=Shippori+Mincho:wght@500&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/layout.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+<link rel="stylesheet" href="../assets/css/animation.css">
+<link rel="stylesheet" href="../assets/css/form.css">
+<script src="../assets/js/common.js" defer></script>
+<script src="../assets/js/contact.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-logo" href="../index.html">
+      <img class="site-logo__mark" src="../assets/img/common/logo-verilab.png" alt="VERILAB" width="317" height="44">
+      <span class="site-logo__text">
+        <span class="site-logo__en">DOCTOR'S FILE</span>
+        <span class="site-logo__ja">肌と向き合う、医師たち。</span>
+      </span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="global-nav" aria-label="メニューを開く">
+      <span class="menu-button__bar"></span>
+      <span class="menu-button__bar"></span>
+    </button>
+    <nav class="global-nav" id="global-nav" aria-label="メインメニュー">
+      <ul class="global-nav__list">
+        <li><a href="../index.html#about">ABOUT</a></li>
+        <li><a href="../index.html#files">FILES</a></li>
+        <li><a href="index.html" aria-current="page">CONTACT</a></li>
+        <li><a href="https://verilab.jp/" target="_blank" rel="noopener">VERILAB OFFICIAL<span class="global-nav__ext" aria-hidden="true">↗</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="site-main">
+
+  <div class="container container--mid page-head">
+    <span class="drop drop--m" aria-hidden="true"></span>
+    <ol class="breadcrumb intro intro--d1">
+      <li><a href="../index.html">TOP</a></li>
+      <li aria-current="page">お問い合わせ</li>
+    </ol>
+    <span class="label-en intro intro--d1">Contact</span>
+    <h1 class="page-head__title intro intro--d2">お問い合わせ</h1>
+    <p class="page-head__lead intro intro--d3">掲載をご希望の医療機関の方、記事の内容についてのご質問は、こちらのフォームからお送りください。内容を確認のうえ、担当者よりご連絡いたします。</p>
+  </div>
+
+  <section class="container container--mid contact" aria-label="お問い合わせフォーム">
+    <div class="panel contact__card reveal">
+
+      <form class="form" id="contact-form" action="#" method="post" novalidate>
+        <div class="form__row">
+          <label class="form__label" for="contact-type">お問い合わせの種類<span class="form__tag">必須</span></label>
+          <select class="form__select" id="contact-type" name="type" required aria-describedby="contact-type-error">
+            <option value="">選択してください</option>
+            <option value="listing">掲載について（医療機関の方）</option>
+            <option value="article">記事の内容について</option>
+            <option value="other">その他</option>
+          </select>
+          <p class="form__error" id="contact-type-error" hidden></p>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="contact-name">お名前<span class="form__tag">必須</span></label>
+          <input class="form__input" id="contact-name" name="name" type="text" autocomplete="name" required aria-describedby="contact-name-error">
+          <p class="form__error" id="contact-name-error" hidden></p>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="contact-org">医療機関名・会社名<span class="form__tag form__tag--optional">任意</span></label>
+          <input class="form__input" id="contact-org" name="organization" type="text" autocomplete="organization">
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="contact-email">メールアドレス<span class="form__tag">必須</span></label>
+          <input class="form__input" id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="contact-email-error">
+          <p class="form__error" id="contact-email-error" hidden></p>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="contact-tel">電話番号<span class="form__tag form__tag--optional">任意</span></label>
+          <input class="form__input" id="contact-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel">
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="contact-message">お問い合わせ内容<span class="form__tag">必須</span></label>
+          <textarea class="form__textarea" id="contact-message" name="message" required aria-describedby="contact-message-error"></textarea>
+          <p class="form__error" id="contact-message-error" hidden></p>
+        </div>
+
+        <div class="form__row">
+          <label class="form__agree" for="contact-agree">
+            <input id="contact-agree" name="agree" type="checkbox" required aria-describedby="contact-agree-error">
+            <span><a href="../policy/index.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意のうえ送信します。</span>
+          </label>
+          <p class="form__error" id="contact-agree-error" hidden></p>
+        </div>
+
+        <button class="btn-pill form__submit" type="submit">送信する</button>
+      </form>
+
+      <div class="form__done" id="contact-done" tabindex="-1" role="status" hidden>
+        <p>お問い合わせを受け付けました。<br>内容を確認のうえ、担当者よりご連絡いたします。</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <a class="site-logo" href="../index.html">
+          <img class="site-logo__mark" src="../assets/img/common/logo-verilab.png" alt="VERILAB" width="317" height="44">
+          <span class="site-logo__text">
+            <span class="site-logo__en">DOCTOR'S FILE</span>
+            <span class="site-logo__ja">肌と向き合う、医師たち。</span>
+          </span>
+        </a>
+        <p class="site-footer__lead">VERILAB を取り扱う医療機関の先生方に、<br>診療への想いを伺うインタビュー企画です。</p>
+      </div>
+      <nav class="footer-nav" aria-label="フッターメニュー">
+        <div class="footer-nav__group">
+          <p class="footer-nav__head">Contents</p>
+          <ul class="footer-nav__list">
+            <li><a href="../index.html">TOP</a></li>
+            <li><a href="../index.html#about">ABOUT</a></li>
+            <li><a href="../index.html#files">FILES</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav__group">
+          <p class="footer-nav__head">Information</p>
+          <ul class="footer-nav__list">
+            <li><a href="../contact/index.html">CONTACT</a></li>
+            <li><a href="../policy/index.html">PRIVACY POLICY</a></li>
+            <li><a href="https://verilab.jp/" target="_blank" rel="noopener">VERILAB OFFICIAL<span class="footer-nav__ext" aria-hidden="true">↗</span></a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <p class="site-footer__copy"><small>© VERILAB DOCTOR'S FILE</small></p>
+  </div>
+</footer>
+
+</body>
+</html>

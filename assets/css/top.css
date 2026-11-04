@@ -1,0 +1,515 @@
+@charset "UTF-8";
+/* ==========================================================
+   top.css — TOP ページ
+   hero / concept / files / pickup / info
+   ========================================================== */
+
+.concept,
+.files,
+.pickup,
+.info {
+  padding-bottom: clamp(96px, 12vw, 160px);
+}
+
+/* ---------- hero（VERILAB 公式と同じ角丸パネル） ---------- */
+.hero {
+  padding: 8px 0 clamp(96px, 12vw, 160px);
+}
+
+.hero__stage {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-visual {
+  position: relative;
+  z-index: 0;
+  height: clamp(560px, calc(100svh - var(--header-h) - 32px), 860px);
+  border-radius: var(--r-l);
+  overflow: hidden;
+  background: var(--c-ph);
+  box-shadow: var(--shadow-float);
+}
+
+/* スライドは重ね順を付けない（上に重ねるコピーより下に描画させるため） */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+}
+
+.hero-slide__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transform: scale(1.05);
+  transition: transform 7s linear;
+}
+
+/* 人物が右寄りの写真（縦長に切れるスマホで人物を残す） */
+.hero-slide__img--right {
+  object-position: 75% 20%;
+}
+
+.hero-slide.is-active .hero-slide__img {
+  transform: scale(1);
+}
+
+.hero-slide__badge {
+  position: absolute;
+  right: 32px;
+  bottom: 104px;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 22px;
+  border-radius: var(--r-s);
+  background: var(--c-surface-strong);
+  line-height: 1.7;
+}
+
+.hero-slide__clinic {
+  font-family: var(--f-mincho);
+  font-size: var(--fs-m);
+  letter-spacing: 0.1em;
+  color: var(--c-text-strong);
+}
+
+.hero-slide:hover {
+  color: inherit;
+}
+
+/* 写真の上に重ねるコピー。英字の difference を効かせるため z-index・transform・opacity を付けない */
+.hero__copy {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: clamp(28px, 6%, 88px);
+  max-width: 56%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  pointer-events: none;
+}
+
+.hero__logo {
+  width: clamp(140px, 12vw, 190px);
+  height: auto;
+}
+
+/* 細い大きな英字。写真に負けないよう濃い青で塗る */
+/* 細く幅の広い英字。写真の色との差分で塗り、明るい所は濃く・暗い所は淡く自然に色が変わる */
+.hero-display {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--f-hero);
+  font-size: clamp(2.25rem, 0.6rem + 4vw, 4.75rem);
+  font-weight: 200;
+  line-height: 1.12;
+  letter-spacing: 0.22em;
+  white-space: nowrap;
+  color: var(--c-hero-blend);
+  mix-blend-mode: difference;
+}
+
+/* 1文字ずつ表示（hero.js が .is-on を付ける） */
+.hero-display__char {
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out);
+}
+
+.hero-display__char.is-on {
+  opacity: 1;
+}
+
+.hero__title {
+  font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.25rem);
+  line-height: 1.6;
+  letter-spacing: 0.2em;
+  color: var(--c-hero-blend);
+  mix-blend-mode: difference;
+}
+
+.hero__type {
+  min-height: 2em;
+  margin-top: -12px;
+  font-family: var(--f-mincho);
+  font-size: var(--fs-m);
+  letter-spacing: 0.16em;
+  color: var(--c-hero-blend);
+  mix-blend-mode: difference;
+}
+
+.hero__type-text::before {
+  content: "— ";
+}
+
+/* 点滅するカーソル */
+.hero__type-text::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 1.1em;
+  margin-left: 4px;
+  vertical-align: -0.15em;
+  background: var(--c-hero-blend);
+  animation: blink 1s steps(1) infinite;
+}
+
+.hero__drop--1 {
+  top: -22px;
+  left: 40%;
+}
+
+.hero__drop--2 {
+  top: 22%;
+  right: -10px;
+}
+
+.hero-controls {
+  position: absolute;
+  right: 32px;
+  bottom: 32px;
+  width: min(380px, 40%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--f-en);
+  font-size: 0.9375rem;
+  letter-spacing: 0.2em;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-text-strong);
+}
+
+.hero-controls__btn {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--c-sky);
+  border-radius: 50%;
+  background: var(--c-surface);
+  color: var(--c-sky);
+  font-family: var(--f-en);
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: background-color 0.4s var(--ease-out), color 0.4s var(--ease-out);
+}
+
+.hero-controls__btn:hover {
+  background: var(--c-sky);
+  color: var(--c-white);
+}
+
+.no-js .hero-controls__btn,
+.hero-controls__btn[hidden] {
+  display: none;
+}
+
+.hero-progress__track {
+  flex: 1 1 auto;
+  height: 1px;
+  overflow: hidden;
+  background: var(--c-surface);
+}
+
+.hero-progress__bar {
+  display: block;
+  height: 1px;
+  background: var(--c-sky);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* 秒数は index.html の data-interval と揃える */
+.hero-progress__bar.is-running {
+  animation: progress 6s linear forwards;
+}
+
+@media (max-width: 767px) {
+  /* スマホは縦長のパネルにして、コピーを下側に重ねる */
+  .hero-visual {
+    height: 132vw;
+    max-height: 640px;
+  }
+
+  .hero__copy {
+    top: auto;
+    right: 16px;
+    bottom: 20px;
+    left: 16px;
+    max-width: none;
+    gap: 10px;
+  }
+
+  .hero__logo {
+    width: 116px;
+  }
+
+  .hero-display {
+    font-size: clamp(1.75rem, 0.8rem + 5vw, 2.5rem);
+  }
+
+  .hero__title {
+    font-size: 1.375rem;
+  }
+
+  .hero__type {
+    margin-top: -6px;
+  }
+
+  /* コピーと重なるので、札はスマホでは出さない */
+  .hero-slide__badge {
+    display: none;
+  }
+
+  /* スマホではヘッダーにかかって見えるので出さない */
+  .hero__drop--1 {
+    display: none;
+  }
+
+  .hero-controls {
+    position: static;
+    width: auto;
+    margin-top: 20px;
+  }
+
+  .hero-progress__track {
+    background: var(--c-line);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide,
+  .hero-slide__img {
+    transition: none;
+  }
+
+  .hero-progress__bar.is-running,
+  .hero__type-text::after {
+    animation: none;
+  }
+}
+
+/* ---------- concept ---------- */
+.concept__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  text-align: center;
+}
+
+.concept__title {
+  font-size: var(--fs-xxl);
+  line-height: 1.8;
+  letter-spacing: 0.18em;
+}
+
+.concept__body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  line-height: 2.3;
+}
+
+@media (max-width: 767px) {
+  .concept__body {
+    text-align: left;
+  }
+}
+
+.concept__photo {
+  height: clamp(220px, 30vw, 420px);
+  margin-top: clamp(64px, 8vw, 104px);
+  overflow: hidden;
+  background: var(--c-ph);
+}
+
+.concept__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 70%;
+}
+
+/* ---------- files ---------- */
+.files .section-head {
+  margin-bottom: 64px;
+}
+
+.files__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: 40px 32px;
+}
+
+/* ---------- pick up（文章と写真の左右配置） ---------- */
+.pickup__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(40px, 6vw, 96px);
+}
+
+.pickup__media {
+  position: relative;
+  padding: 0 48px 72px 0;
+}
+
+.pickup__photo {
+  aspect-ratio: 14 / 9;
+}
+
+.pickup__photo-sub {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 38%;
+  aspect-ratio: 5 / 6;
+  border: 6px solid var(--c-bg);
+  box-shadow: var(--shadow-soft);
+}
+
+.pickup__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.pickup__title {
+  font-size: clamp(1.375rem, 1.1rem + 0.8vw, 1.875rem);
+  line-height: 1.8;
+  letter-spacing: 0.08em;
+}
+
+.pickup__person {
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+  border-left: 1px solid var(--c-blue);
+  line-height: 1.8;
+}
+
+.pickup__clinic {
+  font-size: var(--fs-xs);
+}
+
+.pickup__name {
+  font-weight: 500;
+  color: var(--c-text-strong);
+}
+
+.pickup__chapters {
+  width: 100%;
+  border-top: 1px solid var(--c-line);
+}
+
+.pickup__chapters li {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--c-line);
+  font-family: var(--f-mincho);
+  line-height: 1.7;
+  color: var(--c-text-strong);
+}
+
+.pickup__chapter-no {
+  flex: none;
+  font-family: var(--f-en);
+  letter-spacing: 0.16em;
+  color: var(--c-accent);
+}
+
+@media (max-width: 899px) {
+  .pickup__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pickup__media {
+    padding: 0 24px 48px 0;
+  }
+}
+
+/* ---------- info（企画について／掲載のご相談） ---------- */
+/* 2 枚を縦に積み、どちらも横長のカードにして余白を出さない */
+.info__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.info-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: clamp(28px, 5vw, 64px);
+  padding: clamp(32px, 4vw, 48px) clamp(24px, 4vw, 56px);
+  border-radius: var(--r-l);
+}
+
+.info-card--brand {
+  background: var(--c-blue-pale);
+}
+
+.info-card--contact {
+  background: var(--c-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.info-card .drop--m {
+  top: -14px;
+  right: 48px;
+}
+
+.info-card__photo {
+  flex: 0 0 38%;
+  aspect-ratio: 4 / 3;
+  box-shadow: var(--shadow-soft);
+}
+
+.info-card__body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.info-card__title {
+  font-size: 1.5rem;
+  line-height: 1.7;
+  letter-spacing: 0.14em;
+}
+
+.info-card__action {
+  flex: none;
+}
+
+@media (max-width: 767px) {
+  .info-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .info-card__photo {
+    flex: none;
+    width: 100%;
+  }
+}

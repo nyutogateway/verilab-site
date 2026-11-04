@@ -1,0 +1,321 @@
+@charset "UTF-8";
+/* ==========================================================
+   layout.css — コンテナ・ヘッダー・ナビ・フッター
+   ========================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--w-max);
+  margin-inline: auto;
+  padding-left: var(--gutter-l);
+  padding-right: var(--gutter-r);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: max(32px, env(safe-area-inset-left, 0px));
+    padding-right: max(32px, env(safe-area-inset-right, 0px));
+  }
+}
+
+.container--mid {
+  max-width: 1104px;
+}
+
+/* 記事ページ：中身の幅を 1000px にそろえる */
+.container--article {
+  max-width: calc(var(--w-article) + 64px);
+}
+
+/* ---------- header ---------- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 60;
+  background: var(--c-bg);
+}
+
+.site-header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 50;
+  transition: background-color 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+}
+
+.site-header.is-scrolled {
+  background-color: var(--c-bg-header);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--c-line);
+}
+
+.site-header__inner {
+  min-height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 40px;
+}
+
+/* VERILAB ロゴ＋縦線＋企画名 */
+.site-logo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-logo__mark {
+  width: auto;
+  height: 22px;
+}
+
+.site-logo__text {
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+  border-left: 1px solid var(--c-line);
+  line-height: 1.5;
+}
+
+.site-logo__en {
+  font-family: var(--f-en);
+  font-size: 0.8125rem;
+  letter-spacing: 0.24em;
+  color: var(--c-sky);
+}
+
+.site-logo__ja {
+  font-family: var(--f-mincho);
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  color: var(--c-text-strong);
+}
+
+.global-nav__list {
+  display: flex;
+  gap: 8px 40px;
+  font-family: var(--f-en);
+  font-size: 0.9375rem;
+  letter-spacing: 0.14em;
+}
+
+.global-nav__list a {
+  display: inline-block;
+  padding-block: 12px;
+}
+
+.site-logo__text,
+.global-nav__list a {
+  white-space: nowrap;
+}
+
+/* タブレット幅：メニューが 4 つになったので詰める */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .global-nav__list {
+    gap: 8px 20px;
+    font-size: 0.8125rem;
+  }
+
+  .site-header .site-logo__text {
+    display: none;
+  }
+}
+
+/* 外部リンク（VERILAB 公式）の矢印 */
+.global-nav__ext {
+  margin-left: 6px;
+  font-size: 0.8em;
+}
+
+.menu-button {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --header-h: 72px;
+  }
+
+  .site-logo {
+    gap: 12px;
+  }
+
+  .site-logo__mark {
+    height: 17px;
+  }
+
+  .site-logo__text {
+    padding-left: 12px;
+  }
+
+  .site-logo__en {
+    font-size: 0.6875rem;
+  }
+
+  /* スマホでは企画名の和文を省き、1行に収める */
+  .site-logo__ja {
+    display: none;
+  }
+
+  .menu-button {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    width: 48px;
+    height: 48px;
+    margin-right: -8px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .menu-button__bar {
+    display: block;
+    width: 26px;
+    height: 1px;
+    background: var(--c-text-strong);
+    transition: transform 0.4s var(--ease-out), opacity 0.3s;
+  }
+
+  .menu-button[aria-expanded="true"] .menu-button__bar:nth-child(1) {
+    transform: translateY(4px) rotate(30deg);
+  }
+
+  .menu-button[aria-expanded="true"] .menu-button__bar:nth-child(2) {
+    transform: translateY(-4px) rotate(-30deg);
+  }
+
+  .global-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(env(safe-area-inset-top, 0px) + 80px) var(--gutter-r) calc(env(safe-area-inset-bottom, 0px) + 40px) var(--gutter-l);
+    background: var(--c-bg-menu);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s var(--ease-out), visibility 0.5s;
+  }
+
+  .global-nav.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .global-nav__list {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.5rem;
+  }
+
+  body.is-menu-open {
+    overflow: hidden;
+  }
+}
+
+/* ---------- main ---------- */
+.site-main {
+  display: block;
+}
+
+/* ---------- footer ---------- */
+/* ヘッダーと同じ地色・文字色にそろえ、上に罫線だけ引く */
+.site-footer {
+  border-top: 1px solid var(--c-line);
+  background: var(--c-bg-header);
+  color: var(--c-text);
+}
+
+.site-footer a:hover {
+  color: var(--c-accent);
+}
+
+.site-footer__inner {
+  padding-block: 72px calc(40px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.site-footer__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px 64px;
+}
+
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.site-footer__lead {
+  font-size: var(--fs-s);
+  line-height: 2;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px clamp(40px, 5vw, 72px);
+}
+
+.footer-nav__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-nav__head {
+  font-family: var(--f-en);
+  font-size: 0.8125rem;
+  letter-spacing: 0.2em;
+  color: var(--c-sky);
+}
+
+.footer-nav__list {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--f-en);
+  font-size: 0.9375rem;
+  letter-spacing: 0.14em;
+}
+
+.footer-nav__list a {
+  display: inline-block;
+  padding-block: 6px;
+}
+
+.footer-nav__ext {
+  margin-left: 6px;
+}
+
+@media (max-width: 767px) {
+  .footer-nav {
+    flex-direction: column;
+  }
+}
+
+.site-footer__copy {
+  padding-top: 24px;
+  border-top: 1px solid var(--c-line);
+  font-family: var(--f-en);
+  font-size: 0.875rem;
+  letter-spacing: 0.16em;
+}

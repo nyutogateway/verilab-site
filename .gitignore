@@ -1,0 +1,18 @@
+# OS / エディタ
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 秘密情報（フォーム送信用の設定など）
+.env
+.env.*
+
+# 依存パッケージ・ビルド成果物
+node_modules/
+dist/
+
+# バックアップ・アーカイブ
+*.bak
+*.zip
+*.log

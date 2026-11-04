@@ -1,0 +1,131 @@
+@charset "UTF-8";
+/* ==========================================================
+   form.css — お問い合わせフォーム
+   ========================================================== */
+
+.contact {
+  padding-bottom: 128px;
+}
+
+.contact__card {
+  padding: clamp(28px, 5vw, 64px);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.form__row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form__label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--fs-s);
+  font-weight: 500;
+  color: var(--c-text-strong);
+}
+
+.form__tag {
+  display: inline-block;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1.9;
+  background: var(--c-accent);
+  color: var(--c-white);
+}
+
+.form__tag--optional {
+  background: var(--c-line);
+  color: var(--c-text-strong);
+}
+
+.form__input,
+.form__select,
+.form__textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 18px;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-s);
+  background: var(--c-surface-solid);
+  font-size: 1rem;
+  line-height: 1.7;
+  transition: border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+
+.form__select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 48px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--c-accent) 50%), linear-gradient(135deg, var(--c-accent) 50%, transparent 50%);
+  background-position: calc(100% - 24px) 50%, calc(100% - 18px) 50%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.form__textarea {
+  min-height: 200px;
+  resize: vertical;
+}
+
+.form__input:focus,
+.form__select:focus,
+.form__textarea:focus {
+  outline: none;
+  border-color: var(--c-blue);
+  box-shadow: 0 0 0 4px var(--c-focus-ring);
+}
+
+.form__input[aria-invalid="true"],
+.form__select[aria-invalid="true"],
+.form__textarea[aria-invalid="true"] {
+  border-color: var(--c-error-line);
+}
+
+.form__error {
+  font-size: var(--fs-xs);
+  color: var(--c-error);
+}
+
+.form__agree {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: var(--fs-s);
+  line-height: 1.9;
+}
+
+.form__agree input {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  accent-color: var(--c-accent);
+}
+
+.form__agree a {
+  border-bottom: 1px solid var(--c-blue);
+}
+
+.form__submit {
+  align-self: center;
+  min-width: 240px;
+}
+
+.form__done {
+  padding: 32px;
+  border-radius: var(--r-m);
+  background: var(--c-blue-pale);
+  text-align: center;
+  color: var(--c-text-strong);
+}

@@ -1,0 +1,390 @@
+@charset "UTF-8";
+/* ==========================================================
+   article.css — インタビュー記事ページ
+   ========================================================== */
+
+/* ---------- 記事ヘッダー ---------- */
+/* 中央揃えの見出しブロックの下に、横長の写真を大きく置く */
+.article-head {
+  position: relative;
+  padding-top: clamp(32px, 5vw, 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(40px, 5vw, 64px);
+}
+
+.article-head__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+}
+
+/* 細い大きな番号（TOP の英字と同じ書体） */
+.article-head__no {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--f-display);
+  font-weight: 300;
+  line-height: 1;
+  font-variant-numeric: lining-nums;
+  color: var(--c-hero-display);
+}
+
+.article-head__no-label {
+  font-size: 1.0625rem;
+  letter-spacing: 0.3em;
+  color: var(--c-sky);
+}
+
+.article-head__no-num {
+  font-size: clamp(4.5rem, 2.5rem + 5vw, 7.5rem);
+  letter-spacing: 0.04em;
+}
+
+.article-head__title {
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.375rem);
+  line-height: 1.8;
+  letter-spacing: 0.14em;
+}
+
+.article-head__person {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 4px 20px;
+  line-height: 1.8;
+}
+
+.article-head__clinic {
+  font-size: var(--fs-s);
+  letter-spacing: 0.12em;
+}
+
+.article-head__name {
+  font-family: var(--f-mincho);
+  font-size: 1.25rem;
+  letter-spacing: 0.16em;
+  color: var(--c-text-strong);
+}
+
+.article-head__visual {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  border-radius: var(--r-l);
+}
+
+.article-head .drop--m {
+  top: 40px;
+  right: 10%;
+}
+
+.article-head .drop--s {
+  top: 120px;
+  left: 12%;
+}
+
+@media (max-width: 767px) {
+  .article-head .drop--m {
+    display: none;
+  }
+
+  .article-head__person {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* スマホは正方形に切り、理事長を中心に残す */
+  .article-head__visual {
+    aspect-ratio: 1 / 1;
+  }
+
+  .article-head__visual img {
+    object-position: 72% center;
+  }
+}
+
+/* ---------- プロフィール ---------- */
+.profile {
+  padding-top: 72px;
+}
+
+/* 写真なし：左に名前、右に経歴の 2 カラム */
+.profile__card {
+  padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 56px);
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: center;
+  gap: 24px clamp(32px, 5vw, 64px);
+}
+
+.profile__head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-right: clamp(32px, 5vw, 64px);
+  border-right: 1px solid var(--c-line);
+}
+
+@media (max-width: 767px) {
+  .profile__card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .profile__head {
+    padding: 0 0 20px;
+    border-right: 0;
+    border-bottom: 1px solid var(--c-line);
+  }
+}
+
+.profile__role {
+  font-size: var(--fs-s);
+}
+
+.profile__name {
+  font-family: var(--f-mincho);
+  font-size: 1.75rem;
+  line-height: 1.5;
+  letter-spacing: 0.16em;
+  color: var(--c-text-strong);
+}
+
+.profile__name-en {
+  font-family: var(--f-en);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+}
+
+.profile__career {
+  font-size: 0.875rem;
+  line-height: 2.1;
+}
+
+.article-lead {
+  margin-top: 64px;
+  padding-inline: 8px;
+  font-size: 1rem;
+  line-height: 2.2;
+}
+
+/* ---------- 本文 ---------- */
+.article-body {
+  padding-top: 104px;
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+  font-size: 1rem;
+  line-height: 2.2;
+}
+
+.chapter,
+.chapter__text {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.chapter__title {
+  font-size: clamp(1.375rem, 1.1rem + 1vw, 1.75rem);
+  line-height: 1.8;
+  letter-spacing: 0.12em;
+}
+
+/* 本文と写真の 2 カラム。章ごとに写真の左右を入れ替える */
+.chapter--media {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(32px, 5vw, 64px);
+}
+
+.chapter--reverse {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+}
+
+.chapter--reverse > .chapter__photo,
+.chapter--reverse > .chapter__photos {
+  order: -1;
+}
+
+.chapter__photo {
+  aspect-ratio: 4 / 5;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* 読み進めても写真が画面に残る */
+.chapter--media > .chapter__photo,
+.chapter__photos {
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+}
+
+/* 写真 2 枚を縦に重ねる章 */
+.chapter__photos {
+  display: grid;
+  gap: 12px;
+}
+
+.chapter__photo--ch1 img {
+  object-position: 62% center;
+}
+
+@media (max-width: 767px) {
+  .chapter--media,
+  .chapter--reverse {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .chapter--media > .chapter__photo,
+  .chapter__photos,
+  .chapter--reverse > .chapter__photo,
+  .chapter--reverse > .chapter__photos {
+    position: static;
+    order: 0;
+  }
+
+  .chapter--media > .chapter__photo {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* スマホは 2 枚を横に並べる */
+  .chapter__photos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+
+/* 最後の言葉 */
+.closing-quote {
+  margin-block: 24px;
+  padding: 48px clamp(20px, 4vw, 32px);
+  font-family: var(--f-mincho);
+  font-size: clamp(1.125rem, 0.95rem + 0.8vw, 1.4375rem);
+  line-height: 2;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: var(--c-text-strong);
+}
+
+/* ---------- クリニック情報 ---------- */
+.clinic {
+  padding-top: 128px;
+}
+
+.clinic__card {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--c-surface-strong);
+}
+
+.clinic__photo {
+  flex: 1 1 360px;
+  min-height: 380px;
+  border-radius: 0;
+}
+
+/* 看板「古賀クリニック」が切れないよう、写真の左寄りを中心に見せる */
+.clinic__photo-img {
+  object-position: 5% center;
+}
+
+.clinic__body {
+  flex: 999 1 420px;
+  min-width: 0;
+  padding: clamp(28px, 5vw, 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.clinic__name {
+  font-size: 1.5rem;
+  letter-spacing: 0.14em;
+}
+
+.clinic__info {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 12px 24px;
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+.clinic__info dt {
+  color: var(--c-accent);
+}
+
+.clinic__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+}
+
+.text-link {
+  font-size: var(--fs-s);
+  border-bottom: 1px solid var(--c-blue);
+  padding-bottom: 2px;
+}
+
+/* ---------- 前後の記事 ---------- */
+.pager {
+  padding-block: 96px 128px;
+}
+
+.pager__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: 16px;
+}
+
+.pager__item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 24px 28px;
+  border-radius: var(--r-m);
+  background: var(--c-surface-light);
+  transition: background-color 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+a.pager__item:hover {
+  background: var(--c-surface-solid);
+  transform: translateY(-3px);
+}
+
+.pager__item--center {
+  align-items: center;
+  text-align: center;
+}
+
+.pager__item--end {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.pager__label {
+  font-family: var(--f-en);
+  font-size: 0.9375rem;
+  letter-spacing: 0.24em;
+  color: var(--c-accent);
+}
+
+.pager__title {
+  font-family: var(--f-mincho);
+  font-size: 1rem;
+}
+
+.pager__item--disabled {
+  opacity: 0.6;
+}
