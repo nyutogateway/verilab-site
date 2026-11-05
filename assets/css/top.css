@@ -50,8 +50,8 @@
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
-  transform: scale(1.05);
-  transition: transform 7s linear;
+  transform: scale(1.14);
+  transition: transform 8s var(--ease-out);
 }
 
 /* 人物が右寄りの写真（縦長に切れるスマホで人物を残す） */
@@ -101,6 +101,11 @@
   pointer-events: none;
 }
 
+/* 表示演出のぼかしがロゴの白塗りを上書きしないよう、演出は外側の枠に付ける */
+.hero__logo-wrap {
+  display: block;
+}
+
 .hero__logo {
   width: clamp(190px, 17vw, 270px);
   height: auto;
@@ -123,14 +128,20 @@
   text-shadow: 0 2px 22px var(--c-hero-shadow), 0 0 6px var(--c-hero-shadow), 0 1px 2px var(--c-hero-shadow);
 }
 
-/* 1文字ずつ表示（hero.js が .is-on を付ける） */
+/* 1文字ずつ、ぼかしの中から立ち上がる（hero.js が .is-on を付ける） */
 .hero-display__char {
+  display: inline-block;
+  white-space: pre;
   opacity: 0;
-  transition: opacity 0.6s var(--ease-out);
+  transform: translateY(0.4em);
+  filter: blur(10px);
+  transition: opacity 0.8s var(--ease-out), transform 1s var(--ease-out), filter 0.9s var(--ease-out);
 }
 
 .hero-display__char.is-on {
   opacity: 1;
+  transform: none;
+  filter: none;
 }
 
 .hero__title {
@@ -297,7 +308,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero-slide,
-  .hero-slide__img {
+  .hero-slide__img,
+  .hero-display__char {
     transition: none;
   }
 
@@ -307,19 +319,52 @@
   }
 }
 
-/* ---------- concept（左に文章、右に製品写真） ---------- */
+/* ---------- concept（横いっぱいの製品写真の下に、見出しと本文を左右に） ---------- */
 .concept__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-  align-items: center;
-  gap: clamp(40px, 7vw, 112px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(48px, 6vw, 88px);
+}
+
+.concept__media {
+  position: relative;
+}
+
+/* 横長の元写真をそのままの比率で、横いっぱいに見せる */
+.concept__photo {
+  aspect-ratio: 2400 / 1256;
+  max-width: 100%;
+}
+
+/* 写真の下側（木の台）に 1 行で重ねる英字。メインビジュアルと同じガラス風の白 */
+.concept__en {
+  position: absolute;
+  left: clamp(20px, 4vw, 56px);
+  right: clamp(20px, 4vw, 56px);
+  bottom: clamp(16px, 3vw, 44px);
+  font-family: var(--f-hero);
+  font-size: clamp(1.5rem, 0.4rem + 4.2vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 0.16em;
+  color: var(--c-hero-text);
+  -webkit-text-stroke: 1px var(--c-hero-edge);
+  text-shadow: 0 2px 22px var(--c-hero-shadow), 0 0 6px var(--c-hero-shadow), 0 1px 2px var(--c-hero-shadow);
+  pointer-events: none;
 }
 
 .concept__text {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  align-items: start;
+  gap: 32px clamp(40px, 7vw, 112px);
+}
+
+.concept__head {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 28px;
+  gap: 20px;
 }
 
 .concept__title {
@@ -328,47 +373,26 @@
   letter-spacing: 0.18em;
 }
 
+/* 見出しの横に罫線を引いて、本文を区切る */
 .concept__body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding-top: 8px;
+  padding-left: clamp(32px, 4vw, 56px);
+  border-left: 1px solid var(--c-line);
   line-height: 2.3;
 }
 
-.concept__media {
-  position: relative;
-}
-
-/* 写真の下側（木の台）に重ねる英字。メインビジュアルと同じガラス風の白 */
-.concept__en {
-  position: absolute;
-  left: clamp(20px, 3vw, 36px);
-  bottom: clamp(20px, 3vw, 36px);
-  z-index: 1;
-  font-family: var(--f-hero);
-  font-size: clamp(1.375rem, 0.8rem + 1.4vw, 2.125rem);
-  font-weight: 300;
-  line-height: 1.15;
-  letter-spacing: 0.16em;
-  color: var(--c-hero-text);
-  -webkit-text-stroke: 1px var(--c-hero-edge);
-  text-shadow: 0 2px 22px var(--c-hero-shadow), 0 0 6px var(--c-hero-shadow), 0 1px 2px var(--c-hero-shadow);
-  pointer-events: none;
-}
-
-/* 横長の元写真をそのままの比率で見せる */
-.concept__photo {
-  aspect-ratio: 2400 / 1256;
-  max-width: 100%;
-}
-
-.concept__photo img {
-  object-position: 50% center;
-}
-
 @media (max-width: 899px) {
-  .concept__inner {
+  .concept__text {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .concept__body {
+    padding: 24px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--c-line);
   }
 }
 

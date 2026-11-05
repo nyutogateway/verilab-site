@@ -6,11 +6,13 @@
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(32px);
+    filter: blur(10px);
   }
   to {
     opacity: 1;
     transform: none;
+    filter: none;
   }
 }
 
@@ -99,15 +101,48 @@
 }
 
 /* ---------- スクロールで表示（JS 有効時のみ隠す） ---------- */
+/* ぼかしの中から浮き上がるように出す */
 .js-reveal .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 1.2s var(--ease-out), transform 1.2s var(--ease-out);
+  transform: translateY(48px);
+  filter: blur(12px);
+  transition: opacity 1.2s var(--ease-out), transform 1.4s var(--ease-out), filter 1.2s var(--ease-out);
 }
 
 .js-reveal .reveal.is-visible {
   opacity: 1;
   transform: none;
+  filter: none;
+}
+
+/* 写真は下から幕が上がるように現れ、同時に寄りから引いていく */
+.js-reveal .reveal .photo {
+  clip-path: inset(100% -60px -60px -60px);
+  transition: clip-path 1.4s var(--ease-out) 0.15s;
+}
+
+.js-reveal .reveal.is-visible .photo {
+  clip-path: inset(-60px);
+}
+
+.js-reveal .reveal .photo img {
+  transition: transform 2s var(--ease-out);
+}
+
+.js-reveal .reveal:not(.is-visible) .photo img {
+  transform: scale(1.2);
+}
+
+/* Concept の英字：広い字間から締まっていく */
+.js-reveal .reveal .concept__en {
+  opacity: 0;
+  letter-spacing: 0.4em;
+  transition: opacity 1.6s var(--ease-out) 0.6s, letter-spacing 2.2s var(--ease-out) 0.6s;
+}
+
+.js-reveal .reveal.is-visible .concept__en {
+  opacity: 1;
+  letter-spacing: 0.16em;
 }
 
 .js-reveal .reveal--d1 { transition-delay: 0.12s; }
@@ -141,10 +176,22 @@
 
   .intro,
   .is-loaded .intro,
-  .js-reveal .reveal {
+  .js-reveal .reveal,
+  .js-reveal .reveal .concept__en {
     opacity: 1;
     transform: none;
+    filter: none;
     animation: none;
+    transition: none;
+  }
+
+  .js-reveal .reveal .photo {
+    clip-path: none;
+    transition: none;
+  }
+
+  .js-reveal .reveal .photo img {
+    transform: none;
     transition: none;
   }
 
