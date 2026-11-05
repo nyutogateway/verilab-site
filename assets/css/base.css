@@ -15,9 +15,9 @@
   --c-bg-menu: rgba(239, 244, 246, 0.96);
   --c-hero-display: #34596A;
   /* メインビジュアルのコピー：透ける白（ガラス風）と、輪郭を立てる淡い影 */
-  --c-hero-text: rgba(255, 255, 255, 0.5);
+  --c-hero-text: rgba(255, 255, 255, 0.82);
   --c-hero-edge: rgba(255, 255, 255, 0.95);
-  --c-hero-shadow: rgba(18, 44, 60, 0.32);
+  --c-hero-shadow: rgba(18, 44, 60, 0.5);
   --c-text: #626262;
   --c-text-strong: #4F4F4F;
   --c-head: #575757;
