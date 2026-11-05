@@ -8,13 +8,13 @@
 }
 
 .contact__card {
-  padding: clamp(28px, 5vw, 64px);
+  padding: clamp(32px, 5vw, 64px);
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
 }
 
 .form__row {
@@ -26,7 +26,7 @@
 .form__label {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   font-size: var(--fs-s);
   font-weight: 500;
   color: var(--c-text-strong);
@@ -34,7 +34,7 @@
 
 .form__tag {
   display: inline-block;
-  padding: 0 10px;
+  padding: 0 8px;
   border-radius: 999px;
   font-size: 0.6875rem;
   font-weight: 400;
@@ -54,7 +54,7 @@
 .form__textarea {
   width: 100%;
   min-height: 52px;
-  padding: 12px 18px;
+  padding: 16px;
   border: 1px solid var(--c-line);
   border-radius: var(--r-s);
   background: var(--c-surface-solid);
@@ -100,7 +100,7 @@
 .form__agree {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 16px;
   font-size: var(--fs-s);
   line-height: 1.9;
 }
@@ -109,7 +109,7 @@
   flex: 0 0 auto;
   width: 20px;
   height: 20px;
-  margin-top: 4px;
+  margin-top: 8px;
   accent-color: var(--c-accent);
 }
 

@@ -8,7 +8,7 @@
 }
 
 .policy__card {
-  padding: clamp(28px, 5vw, 64px);
+  padding: clamp(32px, 5vw, 64px);
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -21,7 +21,7 @@
 .policy__section {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .policy__heading {
@@ -33,7 +33,7 @@
 .policy__list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   padding-left: 1.4em;
   list-style: disc;
 }

@@ -18,7 +18,7 @@
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .label-en--line::after {
@@ -85,7 +85,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 16px 16px 28px;
+  padding: 16px 16px 32px;
   border-radius: var(--r-m);
   background: var(--c-surface);
   box-shadow: var(--shadow-soft);
@@ -116,7 +116,7 @@
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   padding-inline: 8px;
 }
 
@@ -125,7 +125,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  gap: 4px 12px;
+  gap: 8px 16px;
   font-size: var(--fs-xs);
 }
 
@@ -141,7 +141,7 @@
 .file-card__person {
   display: flex;
   flex-direction: column;
-  padding-top: 12px;
+  padding-top: 16px;
   border-top: 1px solid var(--c-line);
   line-height: 1.8;
 }
@@ -169,7 +169,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 16px;
   min-height: 52px;
   padding: 0 32px;
   border: 0;
@@ -264,12 +264,12 @@
 .breadcrumb {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 12px;
+  gap: 8px 16px;
   font-size: var(--fs-xs);
 }
 
 .breadcrumb li + li::before {
   content: "/";
-  margin-right: 12px;
+  margin-right: 16px;
   color: var(--c-blue);
 }

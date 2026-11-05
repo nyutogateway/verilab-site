@@ -105,7 +105,7 @@ body::before {
 
 .global-nav__list a {
   display: inline-block;
-  padding-block: 12px;
+  padding-block: 16px;
 }
 
 .site-logo__text,
@@ -116,7 +116,7 @@ body::before {
 /* タブレット幅：メニューが 4 つになったので詰める */
 @media (min-width: 768px) and (max-width: 1023px) {
   .global-nav__list {
-    gap: 8px 20px;
+    gap: 8px 24px;
     font-size: 0.8125rem;
   }
 
@@ -127,7 +127,7 @@ body::before {
 
 /* 外部リンク（VERILAB 公式）の矢印 */
 .global-nav__ext {
-  margin-left: 6px;
+  margin-left: 8px;
   font-size: 0.8em;
 }
 
@@ -141,7 +141,7 @@ body::before {
   }
 
   .site-logo {
-    gap: 12px;
+    gap: 16px;
   }
 
   .site-logo__mark {
@@ -149,7 +149,7 @@ body::before {
   }
 
   .site-logo__text {
-    padding-left: 12px;
+    padding-left: 16px;
   }
 
   .site-logo__en {
@@ -218,7 +218,7 @@ body::before {
   .global-nav__list {
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
     font-size: 1.5rem;
   }
 
@@ -262,7 +262,7 @@ body::before {
 .site-footer__brand {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 
 .site-footer__lead {
@@ -299,11 +299,11 @@ body::before {
 
 .footer-nav__list a {
   display: inline-block;
-  padding-block: 6px;
+  padding-block: 8px;
 }
 
 .footer-nav__ext {
-  margin-left: 6px;
+  margin-left: 8px;
 }
 
 @media (max-width: 767px) {

@@ -22,13 +22,13 @@
 
 .article-head__text {
   position: absolute;
-  left: clamp(28px, 5vw, 80px);
-  bottom: clamp(28px, 5vw, 72px);
+  left: clamp(32px, 5vw, 80px);
+  bottom: clamp(32px, 5vw, 72px);
   max-width: 60%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 20px;
+  gap: 24px;
   pointer-events: none;
 }
 
@@ -44,7 +44,7 @@
 .article-head__no {
   display: flex;
   align-items: baseline;
-  gap: 20px;
+  gap: 24px;
   font-family: var(--f-hero);
   font-weight: 300;
   line-height: 1;
@@ -72,7 +72,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 4px 20px;
+  gap: 8px 24px;
   line-height: 1.8;
   -webkit-text-stroke: 0;
 }
@@ -113,11 +113,11 @@
   }
 
   .article-head__text {
-    left: 20px;
-    right: 20px;
+    left: 24px;
+    right: 24px;
     bottom: 24px;
     max-width: none;
-    gap: 12px;
+    gap: 16px;
   }
 
   .article-head__person {
@@ -133,7 +133,7 @@
 
 /* 写真なし：左に名前、右に経歴の 2 カラム */
 .profile__card {
-  padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 56px);
+  padding: clamp(32px, 4vw, 48px) clamp(24px, 4vw, 56px);
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
   align-items: center;
@@ -143,7 +143,7 @@
 .profile__head {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0;
   padding-right: clamp(32px, 5vw, 64px);
   border-right: 1px solid var(--c-line);
 }
@@ -154,7 +154,7 @@
   }
 
   .profile__head {
-    padding: 0 0 20px;
+    padding: 0 0 24px;
     border-right: 0;
     border-bottom: 1px solid var(--c-line);
   }
@@ -204,7 +204,7 @@
 .chapter__text {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
 }
 
 .chapter__title {
@@ -256,7 +256,7 @@
 /* 写真 2 枚を縦に重ねる章 */
 .chapter__photos {
   display: grid;
-  gap: 12px;
+  gap: 16px;
 }
 
 @media (max-width: 767px) {
@@ -355,10 +355,10 @@
 .clinic__body {
   flex: 999 1 420px;
   min-width: 0;
-  padding: clamp(28px, 5vw, 48px);
+  padding: clamp(32px, 5vw, 48px);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 
 .clinic__name {
@@ -369,7 +369,7 @@
 .clinic__info {
   display: grid;
   grid-template-columns: 88px minmax(0, 1fr);
-  gap: 12px 24px;
+  gap: 16px 24px;
   font-size: 0.875rem;
   line-height: 1.8;
 }
@@ -381,14 +381,14 @@
 .clinic__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 24px;
+  gap: 16px 24px;
   align-items: center;
 }
 
 .text-link {
   font-size: var(--fs-s);
   border-bottom: 1px solid var(--c-blue);
-  padding-bottom: 2px;
+  padding-bottom: 0;
 }
 
 /* ---------- 前後の記事 ---------- */
@@ -406,8 +406,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 24px 28px;
+  gap: 8px;
+  padding: 24px 32px;
   border-radius: var(--r-m);
   background: var(--c-surface-light);
   transition: background-color 0.4s var(--ease-out), transform 0.4s var(--ease-out);
