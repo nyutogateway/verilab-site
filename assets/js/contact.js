@@ -11,6 +11,13 @@
 
   var done = document.getElementById('contact-done');
 
+  // TOP の窓口から来たとき（?type=listing など）は、種類を選んだ状態にする
+  var typeSelect = document.getElementById('contact-type');
+  var typeParam = (new URLSearchParams(window.location.search).get('type') || '').replace(/[^a-z]/g, '');
+  if (typeSelect && typeParam && typeSelect.querySelector('option[value="' + typeParam + '"]')) {
+    typeSelect.value = typeParam;
+  }
+
   var messages = {
     valueMissing: 'この項目を入力してください。',
     typeMismatch: 'メールアドレスの形式で入力してください（例：name@example.com）。',

@@ -100,16 +100,21 @@
 
   <!-- concept -->
   <section class="concept" id="about" aria-labelledby="concept-title">
-    <div class="container container--mid concept__inner reveal">
-      <span class="label-en label-en--line">Concept</span>
-      <h2 class="concept__title" id="concept-title">肌の声を聴く人の、<br>声を残す。</h2>
-      <div class="concept__body">
-        <p>乾燥、かゆみ、敏感肌。肌の悩みは目に見えるぶん、<br class="br-pc">ひとりで抱え込んでしまいがちです。<br class="br-pc">その一つひとつに、診察室で向き合い続けている医師たちがいます。</p>
-        <p>「肌と向き合う、医師たち。」は、そうした先生方に、<br class="br-pc">開院までの歩みや日々の診療で大切にしている想いを伺うインタビュー企画です。<br class="br-pc">はじめて受診する方が、先生の人柄を知ってから扉を開けられるように。</p>
+    <div class="container concept__inner">
+      <div class="concept__text reveal">
+        <span class="label-en">Concept</span>
+        <h2 class="concept__title" id="concept-title">肌の声を聴く人の、<br>声を残す。</h2>
+        <div class="concept__body">
+          <p>乾燥、かゆみ、敏感肌。肌の悩みは目に見えるぶん、ひとりで抱え込んでしまいがちです。その一つひとつに、診察室で向き合い続けている医師たちがいます。</p>
+          <p>「肌と向き合う、医師たち。」は、そうした先生方に、開院までの歩みや日々の診療で大切にしている想いを伺うインタビュー企画です。はじめて受診する方が、先生の人柄を知ってから扉を開けられるように。</p>
+        </div>
       </div>
-    </div>
-    <div class="concept__photo reveal">
-      <img src="assets/img/verilab/lineup-wood.jpg" alt="VERILAB の製品" width="2400" height="1256" loading="lazy">
+      <div class="concept__media reveal reveal--d1">
+        <span class="concept__en" aria-hidden="true">Listening<br>to the Skin</span>
+        <div class="photo photo--float concept__photo">
+          <img src="assets/img/verilab/lineup-wood.jpg" alt="VERILAB の製品" width="2400" height="1256" loading="lazy">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -206,8 +211,8 @@
     </div>
   </section>
 
-  <!-- info：企画について／掲載のご相談 -->
-  <section class="info" aria-label="企画について・掲載のご相談">
+  <!-- info：企画について -->
+  <section class="info" aria-label="企画について">
     <div class="container info__grid">
       <div class="info-card info-card--brand reveal" id="brand">
         <div class="photo info-card__photo">
@@ -220,16 +225,50 @@
           <a class="btn-pill btn-pill--ghost" href="https://verilab.jp/" target="_blank" rel="noopener">VERILAB 公式サイト<span class="btn-pill__arrow" aria-hidden="true">↗</span></a>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="info-card info-card--contact reveal reveal--d1">
-        <span class="drop drop--m" aria-hidden="true"></span>
-        <div class="info-card__body">
-          <span class="label-en">For Clinics</span>
-          <h2 class="info-card__title">掲載をご希望の医療機関の方へ</h2>
-          <p class="info-card__text">VERILAB を取り扱う医療機関の先生方を、順次取材しています。取材・掲載のご相談は、お問い合わせフォームからお送りください。</p>
-        </div>
-        <a class="btn-pill info-card__action" href="contact/index.html">お問い合わせ<span class="btn-pill__arrow" aria-hidden="true">→</span></a>
+  <!-- contact：立場ごとのお問い合わせ窓口 -->
+  <section class="contact-guide" id="contact" aria-labelledby="contact-guide-title">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="label-en label-en--line">Contact</span>
+        <h2 class="section-head__title" id="contact-guide-title">お問い合わせ</h2>
       </div>
+      <ul class="contact-guide__grid">
+        <li class="reveal">
+          <a class="contact-guide__card" href="contact/index.html?type=listing">
+            <span class="label-en">For Clinics</span>
+            <span class="contact-guide__title">掲載をご希望の医療機関の方</span>
+            <span class="contact-guide__text">VERILAB を取り扱う医療機関の先生方を、順次取材しています。インタビュー掲載のご相談はこちらから。</span>
+            <span class="contact-guide__more">掲載について相談する<span class="btn-pill__arrow" aria-hidden="true">→</span></span>
+          </a>
+        </li>
+        <li class="reveal reveal--d1">
+          <a class="contact-guide__card" href="contact/index.html?type=product">
+            <span class="label-en">For Partners</span>
+            <span class="contact-guide__title">VERILAB の取り扱いをご検討中の方</span>
+            <span class="contact-guide__text">製品の導入やお取り扱い、サンプルについてのご相談を承ります。</span>
+            <span class="contact-guide__more">取り扱いについて相談する<span class="btn-pill__arrow" aria-hidden="true">→</span></span>
+          </a>
+        </li>
+        <li class="reveal">
+          <a class="contact-guide__card" href="contact/index.html?type=article">
+            <span class="label-en">For Readers</span>
+            <span class="contact-guide__title">記事をお読みいただいた方</span>
+            <span class="contact-guide__text">記事へのご感想やご質問をお寄せください。診療やご予約については、各クリニックへ直接お問い合わせください。</span>
+            <span class="contact-guide__more">感想・質問を送る<span class="btn-pill__arrow" aria-hidden="true">→</span></span>
+          </a>
+        </li>
+        <li class="reveal reveal--d1">
+          <a class="contact-guide__card" href="contact/index.html?type=media">
+            <span class="label-en">For Media</span>
+            <span class="contact-guide__title">報道・メディア関係の方</span>
+            <span class="contact-guide__text">本企画への取材のお申し込みや、記事・写真の転載・引用についてのご相談はこちらから。</span>
+            <span class="contact-guide__more">メディアの方はこちら<span class="btn-pill__arrow" aria-hidden="true">→</span></span>
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 
