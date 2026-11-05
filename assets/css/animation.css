@@ -64,6 +64,16 @@
   }
 }
 
+/* 中身を 2 周ぶん並べ、半分ずらすとつなぎ目なく繰り返す */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes blink {
   50% {
     opacity: 0;
