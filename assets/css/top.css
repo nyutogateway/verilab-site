@@ -319,20 +319,20 @@
   }
 }
 
-/* ---------- concept（横いっぱいの製品写真に、文章のパネルを重ねる） ---------- */
+/* ---------- concept（写真・縦書きの見出し・本文を横に並べ、1 画面に収める） ---------- */
 .concept__inner {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px clamp(40px, 5vw, 80px);
 }
 
 .concept__media {
   position: relative;
 }
 
-/* 横長の元写真をそのままの比率で、横いっぱいに見せる */
+/* PC は見出しと本文の高さに合わせる（横長の写真の左右を少しだけ詰める） */
 .concept__photo {
-  aspect-ratio: 2400 / 1256;
-  max-width: 100%;
+  height: 100%;
 }
 
 /* 写真の左下（木の台）に重ねる英字。メインビジュアルと同じガラス風の白 */
@@ -341,7 +341,7 @@
   left: clamp(24px, 4vw, 56px);
   bottom: clamp(16px, 3vw, 48px);
   font-family: var(--f-hero);
-  font-size: clamp(1.5rem, 0.5rem + 3.2vw, 3.75rem);
+  font-size: clamp(1.5rem, 0.5rem + 2.6vw, 3.25rem);
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: 0.16em;
@@ -351,56 +351,68 @@
   pointer-events: none;
 }
 
-/* 写真の右下に重なる、すりガラスの文章パネル */
 .concept__text {
-  position: relative;
-  z-index: 1;
-  align-self: flex-end;
-  width: min(600px, 50%);
-  margin-top: calc(clamp(160px, 18vw, 280px) * -1);
-  margin-right: clamp(0px, 3vw, 48px);
-  padding: clamp(32px, 4vw, 56px);
   display: flex;
-  flex-direction: column;
-  gap: 24px;
-  border-radius: var(--r-l);
-  background: var(--c-surface-strong);
-  -webkit-backdrop-filter: blur(18px);
-  backdrop-filter: blur(18px);
-  box-shadow: var(--shadow-float);
+  gap: clamp(32px, 4vw, 56px);
 }
 
-.concept__head {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-}
-
+/* 縦書きの見出し */
 .concept__title {
-  font-size: var(--fs-xxl);
+  writing-mode: vertical-rl;
+  font-size: min(var(--fs-xxl), 5svh);
   line-height: 1.8;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.24em;
 }
 
+/* 見出しとの間に細い罫線。ラベルは上、本文は下に寄せる */
 .concept__body {
+  width: clamp(280px, 26vw, 360px);
+  padding-left: clamp(32px, 4vw, 56px);
+  border-left: 1px solid var(--c-line);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.concept__lead {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  line-height: 2.2;
+  font-size: 0.875rem;
+  line-height: 2.1;
 }
 
 @media (max-width: 899px) {
+  .concept__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .concept__photo {
+    height: auto;
+    aspect-ratio: 2400 / 1256;
+  }
+
   .concept__text {
-    align-self: stretch;
-    width: auto;
-    margin: -48px 16px 0;
-    padding: 32px 24px;
+    gap: 24px;
   }
 
   .concept__title {
     font-size: 1.5rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.16em;
+  }
+
+  .concept__body {
+    flex: 1;
+    width: auto;
+    padding-left: 24px;
+    gap: 16px;
+  }
+
+  .concept__lead {
+    gap: 8px;
+    font-size: 0.8125rem;
+    line-height: 2;
   }
 }
 
