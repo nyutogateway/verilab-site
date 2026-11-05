@@ -4,61 +4,77 @@
    ========================================================== */
 
 /* ---------- 記事ヘッダー ---------- */
-/* 中央揃えの見出しブロックの下に、横長の写真を大きく置く */
+/* 大きな写真の左下に、番号・タイトル・名前をガラス風の白で重ねる（TOP のメインビジュアルと同じ表現） */
 .article-head {
   position: relative;
-  padding-top: clamp(32px, 5vw, 64px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(40px, 5vw, 64px);
+  padding-top: clamp(16px, 2vw, 32px);
+}
+
+.article-head__stage {
+  position: relative;
+}
+
+.article-head__visual {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  border-radius: var(--r-l);
 }
 
 .article-head__text {
+  position: absolute;
+  left: clamp(28px, 5vw, 80px);
+  bottom: clamp(28px, 5vw, 72px);
+  max-width: 60%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 28px;
-  text-align: center;
+  align-items: flex-start;
+  gap: 20px;
+  pointer-events: none;
 }
 
-/* 細い大きな番号（TOP の英字と同じ書体） */
+.article-head__no,
+.article-head__title,
+.article-head__person {
+  color: var(--c-hero-text);
+  -webkit-text-stroke: 1px var(--c-hero-edge);
+  text-shadow: 0 2px 22px var(--c-hero-shadow), 0 0 6px var(--c-hero-shadow), 0 1px 2px var(--c-hero-shadow);
+}
+
+/* 細く幅の広い番号（TOP の英字と同じ書体） */
 .article-head__no {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--f-display);
+  align-items: baseline;
+  gap: 20px;
+  font-family: var(--f-hero);
   font-weight: 300;
   line-height: 1;
-  font-variant-numeric: lining-nums;
-  color: var(--c-hero-display);
 }
 
 .article-head__no-label {
-  font-size: 1.0625rem;
+  font-size: clamp(0.875rem, 0.7rem + 0.5vw, 1.125rem);
   letter-spacing: 0.3em;
-  color: var(--c-sky);
+  -webkit-text-stroke: 0;
 }
 
 .article-head__no-num {
-  font-size: clamp(4.5rem, 2.5rem + 5vw, 7.5rem);
-  letter-spacing: 0.04em;
+  order: -1;
+  font-size: clamp(3.5rem, 2rem + 5vw, 7rem);
+  letter-spacing: 0.08em;
 }
 
 .article-head__title {
-  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.375rem);
-  line-height: 1.8;
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.5rem);
+  line-height: 1.7;
   letter-spacing: 0.14em;
 }
 
 .article-head__person {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: baseline;
   gap: 4px 20px;
   line-height: 1.8;
+  -webkit-text-stroke: 0;
 }
 
 .article-head__clinic {
@@ -70,23 +86,16 @@
   font-family: var(--f-mincho);
   font-size: 1.25rem;
   letter-spacing: 0.16em;
-  color: var(--c-text-strong);
-}
-
-.article-head__visual {
-  width: 100%;
-  aspect-ratio: 2 / 1;
-  border-radius: var(--r-l);
 }
 
 .article-head .drop--m {
-  top: 40px;
-  right: 10%;
+  top: -24px;
+  right: 8%;
+  z-index: 1;
 }
 
 .article-head .drop--s {
-  top: 120px;
-  left: 12%;
+  display: none;
 }
 
 @media (max-width: 767px) {
@@ -94,9 +103,25 @@
     display: none;
   }
 
+  /* スマホは縦長にして、文字を写真の下側に収める（理事長を右に残す） */
+  .article-head__visual {
+    aspect-ratio: 5 / 6;
+  }
+
+  .article-head__visual img {
+    object-position: 72% center;
+  }
+
+  .article-head__text {
+    left: 20px;
+    right: 20px;
+    bottom: 24px;
+    max-width: none;
+    gap: 12px;
+  }
+
   .article-head__person {
     flex-direction: column;
-    align-items: center;
     gap: 0;
   }
 }
