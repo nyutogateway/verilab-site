@@ -319,11 +319,10 @@
   }
 }
 
-/* ---------- concept（横いっぱいの製品写真の下に、見出しと本文を左右に） ---------- */
+/* ---------- concept（横いっぱいの製品写真に、文章のパネルを重ねる） ---------- */
 .concept__inner {
   display: flex;
   flex-direction: column;
-  gap: clamp(48px, 6vw, 88px);
 }
 
 .concept__media {
@@ -336,14 +335,13 @@
   max-width: 100%;
 }
 
-/* 写真の下側（木の台）に 1 行で重ねる英字。メインビジュアルと同じガラス風の白 */
+/* 写真の左下（木の台）に重ねる英字。メインビジュアルと同じガラス風の白 */
 .concept__en {
   position: absolute;
   left: clamp(20px, 4vw, 56px);
-  right: clamp(20px, 4vw, 56px);
   bottom: clamp(16px, 3vw, 44px);
   font-family: var(--f-hero);
-  font-size: clamp(1.5rem, 0.4rem + 4.2vw, 4.5rem);
+  font-size: clamp(1.5rem, 0.5rem + 3.2vw, 3.75rem);
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: 0.16em;
@@ -353,18 +351,30 @@
   pointer-events: none;
 }
 
+/* 写真の右下に重なる、すりガラスの文章パネル */
 .concept__text {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-  align-items: start;
-  gap: 32px clamp(40px, 7vw, 112px);
+  position: relative;
+  z-index: 1;
+  align-self: flex-end;
+  width: min(600px, 50%);
+  margin-top: calc(clamp(160px, 18vw, 280px) * -1);
+  margin-right: clamp(0px, 3vw, 48px);
+  padding: clamp(32px, 4vw, 56px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: var(--r-l);
+  background: var(--c-surface-strong);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-float);
 }
 
 .concept__head {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 20px;
+  gap: 16px;
 }
 
 .concept__title {
@@ -373,26 +383,24 @@
   letter-spacing: 0.18em;
 }
 
-/* 見出しの横に罫線を引いて、本文を区切る */
 .concept__body {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding-top: 8px;
-  padding-left: clamp(32px, 4vw, 56px);
-  border-left: 1px solid var(--c-line);
-  line-height: 2.3;
+  gap: 16px;
+  line-height: 2.2;
 }
 
 @media (max-width: 899px) {
   .concept__text {
-    grid-template-columns: minmax(0, 1fr);
+    align-self: stretch;
+    width: auto;
+    margin: -48px 12px 0;
+    padding: 28px 24px;
   }
 
-  .concept__body {
-    padding: 24px 0 0;
-    border-left: 0;
-    border-top: 1px solid var(--c-line);
+  .concept__title {
+    font-size: 1.5rem;
+    letter-spacing: 0.12em;
   }
 }
 
