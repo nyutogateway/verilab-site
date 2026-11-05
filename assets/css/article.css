@@ -99,15 +99,6 @@
     align-items: center;
     gap: 0;
   }
-
-  /* スマホは正方形に切り、理事長を中心に残す */
-  .article-head__visual {
-    aspect-ratio: 1 / 1;
-  }
-
-  .article-head__visual img {
-    object-position: 72% center;
-  }
 }
 
 /* ---------- プロフィール ---------- */
@@ -209,6 +200,11 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
 }
 
+/* 横長の写真を置く章は、本文と写真を半分ずつに */
+.chapter--wide {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .chapter--reverse > .chapter__photo,
 .chapter--reverse > .chapter__photos {
   order: -1;
@@ -218,6 +214,11 @@
   aspect-ratio: 4 / 5;
   max-width: 100%;
   margin: 0;
+}
+
+/* 横長の写真は元の比率のまま */
+.chapter__photo--ch1 {
+  aspect-ratio: 1536 / 987;
 }
 
 /* 読み進めても写真が画面に残る */
@@ -233,10 +234,6 @@
   gap: 12px;
 }
 
-.chapter__photo--ch1 img {
-  object-position: 62% center;
-}
-
 @media (max-width: 767px) {
   .chapter--media,
   .chapter--reverse {
@@ -249,10 +246,6 @@
   .chapter--reverse > .chapter__photos {
     position: static;
     order: 0;
-  }
-
-  .chapter--media > .chapter__photo {
-    aspect-ratio: 4 / 3;
   }
 
   /* スマホは 2 枚を横に並べる */
@@ -274,8 +267,9 @@
   background: var(--c-surface-strong);
 }
 
+/* 正方形の外観写真が切れすぎないよう、幅を本文の高さに近づける */
 .clinic__photo {
-  flex: 1 1 360px;
+  flex: 1 1 460px;
   min-height: 380px;
   border-radius: 0;
 }
