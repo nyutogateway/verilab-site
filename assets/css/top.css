@@ -86,7 +86,7 @@
   color: inherit;
 }
 
-/* 写真の上に重ねるコピー。英字の difference を効かせるため z-index・transform・opacity を付けない */
+/* 写真の上に重ねるコピー */
 .hero__copy {
   position: absolute;
   top: 0;
@@ -104,21 +104,23 @@
 .hero__logo {
   width: clamp(140px, 12vw, 190px);
   height: auto;
+  /* 灰色のロゴを白に変え、英字と同じ透け感と淡い影をのせる */
+  filter: brightness(0) invert(1) opacity(0.85) drop-shadow(0 2px 10px var(--c-hero-shadow)) drop-shadow(0 1px 2px var(--c-hero-shadow));
 }
 
-/* 細い大きな英字。写真に負けないよう濃い青で塗る */
-/* 細く幅の広い英字。写真の色との差分で塗り、明るい所は濃く・暗い所は淡く自然に色が変わる */
+/* 細く幅の広い英字。半透明の白に白い縁を付けたガラス風の文字。淡い影で写真から浮かせる */
 .hero-display {
   display: flex;
   flex-direction: column;
   font-family: var(--f-hero);
   font-size: clamp(2.25rem, 0.6rem + 4vw, 4.75rem);
-  font-weight: 200;
+  font-weight: 300;
   line-height: 1.12;
   letter-spacing: 0.22em;
   white-space: nowrap;
-  color: var(--c-hero-blend);
-  mix-blend-mode: difference;
+  color: var(--c-hero-text);
+  -webkit-text-stroke: 1px var(--c-hero-edge);
+  text-shadow: 0 2px 18px var(--c-hero-shadow), 0 1px 3px var(--c-hero-shadow);
 }
 
 /* 1文字ずつ表示（hero.js が .is-on を付ける） */
@@ -135,8 +137,9 @@
   font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.25rem);
   line-height: 1.6;
   letter-spacing: 0.2em;
-  color: var(--c-hero-blend);
-  mix-blend-mode: difference;
+  color: var(--c-hero-text);
+  -webkit-text-stroke: 1px var(--c-hero-edge);
+  text-shadow: 0 2px 18px var(--c-hero-shadow), 0 1px 3px var(--c-hero-shadow);
 }
 
 .hero__type {
@@ -145,8 +148,9 @@
   font-family: var(--f-mincho);
   font-size: var(--fs-m);
   letter-spacing: 0.16em;
-  color: var(--c-hero-blend);
-  mix-blend-mode: difference;
+  color: var(--c-hero-text);
+  -webkit-text-stroke: 1px var(--c-hero-edge);
+  text-shadow: 0 2px 18px var(--c-hero-shadow), 0 1px 3px var(--c-hero-shadow);
 }
 
 .hero__type-text::before {
@@ -161,7 +165,7 @@
   height: 1.1em;
   margin-left: 4px;
   vertical-align: -0.15em;
-  background: var(--c-hero-blend);
+  background: var(--c-hero-edge);
   animation: blink 1s steps(1) infinite;
 }
 
