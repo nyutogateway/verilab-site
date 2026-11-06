@@ -319,29 +319,30 @@
   }
 }
 
-/* ---------- concept（写真・縦書きの見出し・本文を横に並べ、1 画面に収める） ---------- */
+/* ---------- concept（左に写真、右に文章。上下の中心をそろえ、1 画面に収める） ---------- */
 .concept__inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 32px clamp(40px, 5vw, 80px);
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 32px clamp(48px, 6vw, 96px);
 }
 
 .concept__media {
   position: relative;
 }
 
-/* PC は見出しと本文の高さに合わせる（横長の写真の左右を少しだけ詰める） */
+/* 横長の元写真をそのままの比率で */
 .concept__photo {
-  height: 100%;
+  aspect-ratio: 2400 / 1256;
 }
 
 /* 写真の左下（木の台）に重ねる英字。メインビジュアルと同じガラス風の白 */
 .concept__en {
   position: absolute;
-  left: clamp(24px, 4vw, 56px);
-  bottom: clamp(16px, 3vw, 48px);
+  left: clamp(24px, 3vw, 48px);
+  bottom: clamp(16px, 2.5vw, 40px);
   font-family: var(--f-hero);
-  font-size: clamp(1.5rem, 0.5rem + 2.6vw, 3.25rem);
+  font-size: clamp(1.5rem, 0.5rem + 2.2vw, 2.75rem);
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: 0.16em;
@@ -351,26 +352,11 @@
   pointer-events: none;
 }
 
+/* ラベル → 見出し → 本文の順に上から読む */
 .concept__text {
   display: flex;
-  gap: clamp(32px, 4vw, 56px);
-}
-
-/* 縦書きの見出し */
-.concept__title {
-  writing-mode: vertical-rl;
-  font-size: min(var(--fs-xxl), 5svh);
-  line-height: 1.8;
-  letter-spacing: 0.24em;
-}
-
-/* ラベルと本文はまとめて下に寄せる */
-.concept__body {
-  width: clamp(280px, 26vw, 360px);
-  display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  gap: 32px;
+  align-items: flex-start;
 }
 
 /* 細い英字のラベル（メインビジュアルと同じ書体） */
@@ -384,7 +370,15 @@
   color: var(--c-accent);
 }
 
+.concept__title {
+  margin-top: 24px;
+  font-size: var(--fs-xl);
+  line-height: 1.8;
+  letter-spacing: 0.16em;
+}
+
 .concept__lead {
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -397,27 +391,14 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .concept__photo {
-    height: auto;
-    aspect-ratio: 2400 / 1256;
-  }
-
-  .concept__text {
-    gap: 24px;
-  }
-
   .concept__title {
+    margin-top: 16px;
     font-size: 1.5rem;
-    letter-spacing: 0.16em;
-  }
-
-  .concept__body {
-    flex: 1;
-    width: auto;
-    gap: 16px;
+    letter-spacing: 0.12em;
   }
 
   .concept__lead {
+    margin-top: 24px;
     gap: 8px;
     font-size: 0.8125rem;
     line-height: 2;
