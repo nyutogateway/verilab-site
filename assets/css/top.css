@@ -364,22 +364,17 @@
   letter-spacing: 0.24em;
 }
 
-/* 見出しとの間に細い罫線。ラベルと本文はまとめて下に寄せる */
+/* ラベルと本文はまとめて下に寄せる */
 .concept__body {
   width: clamp(280px, 26vw, 360px);
-  padding-left: clamp(32px, 4vw, 56px);
-  border-left: 1px solid var(--c-line);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   gap: 32px;
 }
 
-/* 短い線＋細い英字のラベル（メインビジュアルと同じ書体） */
+/* 細い英字のラベル（メインビジュアルと同じ書体） */
 .concept__label {
-  display: flex;
-  align-items: center;
-  gap: 16px;
   font-family: var(--f-hero);
   font-size: 0.75rem;
   font-weight: 300;
@@ -387,13 +382,6 @@
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--c-accent);
-}
-
-.concept__label::before {
-  content: "";
-  width: 32px;
-  height: 1px;
-  background: var(--c-accent);
 }
 
 .concept__lead {
@@ -426,7 +414,6 @@
   .concept__body {
     flex: 1;
     width: auto;
-    padding-left: 24px;
     gap: 16px;
   }
 
